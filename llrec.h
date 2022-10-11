@@ -14,6 +14,7 @@ struct Node
 };
 
 
+
 /**
  * Given a linked list pointed to by head, creates two lists
  * where all values less than or equal to the pivot value are
@@ -68,6 +69,7 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
  *
  */
 template <typename Comp>
+
 Node* llfilter(Node* head, Comp pred);
 
 //*****************************************************************************
@@ -82,6 +84,20 @@ Node* llfilter(Node* head, Comp pred)
     // Provide your implementation below
     //*********************************************
 
+  //handling an empty list 
+  if(head == nullptr){
+    return nullptr;
+  }
+  else{
+    Node* temp = llfilter(head->next, pred);
+    Node* temp_two;
+    temp->next = temp;
+    if(pred(head->val) == true){
+      temp_two = temp_two->next;
+      delete head;
+    }
+    return temp_two;
+  }
 
 }
 
