@@ -9,11 +9,13 @@ void llpivot (Node*& head, Node*& smaller, Node*& larger, int pivot){
   }
   else{
     llpivot(head->next,smaller,larger,pivot);
-    if(head->next > pivot){
+    //adds value grater than pivot to larger list 
+    if((head->val) > pivot){
       head->next = larger;
       larger = head; 
     }
-    else if(head-> <= pivot){
+    //adds value less than to smaller list 
+    else if(head->val <= pivot){
       head->next = smaller;
       smaller = head;
     }

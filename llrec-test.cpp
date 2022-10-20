@@ -1,4 +1,4 @@
-#include <iostream>
+  #include <iostream>
 #include <fstream>
 #include <functional>
 #include "llrec.h"
@@ -27,6 +27,11 @@ void print(Node* head);
  */
 void dealloc(Node* head);
 
+struct functor{
+  bool operator()(int x){
+    return (x%2==0);
+  }
+};
 
 Node* readList(const char* filename)
 {
@@ -86,9 +91,21 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
+  Node* smaller = nullptr;
+  Node*larger = nullptr;
+  int pivot = 10;
+  llpivot(head,smaller,larger,pivot);
+  cout << endl << "Smaller";
+  print(smaller);
+  cout <<endl << "Larger";
+  print(larger);
 
-
-
+//LL Filter
+  functor functr;
+  Node* newList;
+  newList = llfilter(smaller,functr);
+  cout << endl << "Filter";
+  print(newList);
     
     return 0;
 

@@ -31,13 +31,16 @@ Stack<T>::~Stack(){}
 
 template <typename T>
 bool Stack<T>::empty() const{
-  if(std::vector::size() == 0){
+  if(std::vector<T>::size() == 0){
+    return true;
+  }
+  else{
     return false;
   }
 }
 template <typename T>
-size)_t Stack<T>::size() const{
-  return std::vector::size();
+size_t Stack<T>::size() const{
+  return std::vector<T>::size();
 }
 template <typename T>
 void Stack<T>::push(const T& item){
@@ -46,19 +49,19 @@ void Stack<T>::push(const T& item){
 template <typename T>
  void Stack<T>::pop(){
    if(this->empty()){
-     throw std::underflow_error("Stack is empty!")
+     throw std::underflow_error("Stack is empty!");
    }
    else{
-     std::vector<T>::pop();
+     std::vector<T>::pop_back();
    }
  }
 template <typename T>
 const T& Stack<T>::top() const{
   if(this->empty()){
-    throw std::underflow_error("Stack is empty!")
+    throw std::underflow_error("Stack is empty!");
   }
   else{
-    return std::vector<T>::at(0);
+    return std::vector<T>::at(std::vector<T>::size()-1);
   }
 }
 
